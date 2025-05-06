@@ -1,66 +1,98 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, BarChart3, CreditCard, DollarSign, Lock, Shield } from "lucide-react"
+import {
+  ArrowRight,
+  BarChart3,
+  CreditCard,
+  DollarSign,
+  Lock,
+  Shield,
+  Phone,
+  Mail,
+  MapPin,
+  Star,
+  Zap,
+  PiggyBank,
+  Menu,
+} from "lucide-react"
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="border-b">
+      <header className="border-b sticky top-0 bg-background/95 backdrop-blur-sm z-50 shadow-sm">
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-emerald-600" />
+            <Shield className="h-6 w-6 text-primary" />
             <span className="text-xl font-bold">SecureBank</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="#features" className="text-sm font-medium hover:text-emerald-600 transition-colors">
+            <Link href="#features" className="text-sm font-medium hover:text-primary transition-colors">
               Features
             </Link>
-            <Link href="#security" className="text-sm font-medium hover:text-emerald-600 transition-colors">
+            <Link href="#security" className="text-sm font-medium hover:text-primary transition-colors">
               Security
             </Link>
-            <Link href="#testimonials" className="text-sm font-medium hover:text-emerald-600 transition-colors">
+            <Link href="#testimonials" className="text-sm font-medium hover:text-primary transition-colors">
               Testimonials
             </Link>
-            <Link href="#contact" className="text-sm font-medium hover:text-emerald-600 transition-colors">
+            <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
               Contact
             </Link>
           </nav>
           <div className="flex items-center gap-4">
             <Link href="/login">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="transition-all hover:shadow-md">
                 Log in
               </Button>
             </Link>
             <Link href="/register">
-              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
+              <Button size="sm" className="bg-primary hover:bg-primary/90 transition-all hover:shadow-md">
                 Sign up
               </Button>
             </Link>
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle menu</span>
+            </Button>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-emerald-50">
-        <div className="container grid gap-8 md:grid-cols-2 items-center">
-          <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tighter">
-              Banking made <span className="text-emerald-600">simple</span>, secure, and smart
+      <section className="py-24 md:py-32 bg-gradient-to-b from-background to-emerald-50 relative overflow-hidden animate-gradient">
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-20 right-10 w-72 h-72 bg-emerald-200 rounded-full opacity-20 blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-80 h-80 bg-emerald-300 rounded-full opacity-20 blur-3xl"></div>
+        </div>
+        <div className="container relative grid gap-12 md:grid-cols-2 items-center">
+          <div className="space-y-8">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium">
+              <Zap className="mr-1 h-3.5 w-3.5" />
+              Banking reimagined for the digital age
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tighter">
+              Banking made{" "}
+              <span className="text-primary relative">
+                simple
+                <span className="absolute bottom-1 left-0 w-full h-3 bg-emerald-100 -z-10 rounded"></span>
+              </span>
+              , secure, and smart
             </h1>
-            <p className="text-lg text-gray-600 max-w-md">
+            <p className="text-lg text-muted-foreground max-w-md">
               Experience the next generation of banking with real-time insights, enhanced security, and seamless
               transactions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/register">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 transition-all hover-lift">
                   Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link href="#features">
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="transition-all hover-lift">
                   Learn More
                 </Button>
               </Link>
@@ -68,349 +100,310 @@ export default function Home() {
           </div>
           <div className="relative">
             <div className="absolute -z-10 rounded-full bg-emerald-100 w-72 h-72 -top-10 -right-10 blur-3xl opacity-70"></div>
-            <img
-              src="/placeholder.svg?height=400&width=500"
-              alt="Banking Dashboard Preview"
-              className="rounded-lg shadow-2xl border border-gray-200"
-            />
+            <div className="relative bg-card p-2 rounded-2xl shadow-2xl border border-border rotate-1 transition-transform hover:rotate-0 duration-500">
+              <Image
+                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                alt="Banking Dashboard Preview"
+                width={500}
+                height={400}
+                className="rounded-xl shadow-sm"
+              />
+              <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground p-3 rounded-2xl shadow-lg">
+                <Shield className="h-6 w-6" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Powerful Banking Features</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+      <section id="features" className="py-24 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#f0fdf4,transparent)]"></div>
+        <div className="container relative">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium mb-4">
+              <Zap className="mr-1 h-3.5 w-3.5" />
+              Powerful Features
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Banking Features You'll Love</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Our platform offers everything you need to manage your finances with confidence and ease.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="rounded-full bg-emerald-100 w-12 h-12 flex items-center justify-center mb-4">
-                  <BarChart3 className="h-6 w-6 text-emerald-600" />
+            {[
+              {
+                icon: <BarChart3 className="h-6 w-6 text-primary" />,
+                title: "Real-time Analytics",
+                description:
+                  "Track your spending patterns and financial health with intuitive visualizations and insights.",
+                image:
+                  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+              },
+              {
+                icon: <CreditCard className="h-6 w-6 text-primary" />,
+                title: "Smart Cards",
+                description:
+                  "Control your cards directly from the app with instant freezing, spending limits, and notifications.",
+                image:
+                  "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+              },
+              {
+                icon: <Lock className="h-6 w-6 text-primary" />,
+                title: "Enhanced Security",
+                description: "Rest easy with biometric authentication, encryption, and real-time fraud detection.",
+                image:
+                  "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+              },
+              {
+                icon: <DollarSign className="h-6 w-6 text-primary" />,
+                title: "Instant Transfers",
+                description: "Send and receive money instantly, with no hidden fees or waiting periods.",
+                image:
+                  "https://images.unsplash.com/photo-1589758438368-0ad531db3366?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+              },
+              {
+                icon: <PiggyBank className="h-6 w-6 text-primary" />,
+                title: "Smart Budgeting",
+                description: "Create custom budgets, set savings goals, and receive personalized financial advice.",
+                image:
+                  "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+              },
+              {
+                icon: <Zap className="h-6 w-6 text-primary" />,
+                title: "Automated Savings",
+                description: "Set up automatic transfers to your savings account based on your spending habits.",
+                image:
+                  "https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+              },
+            ].map((feature, index) => (
+              <Card
+                key={index}
+                className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover-lift bg-card/80 backdrop-blur-sm animate-fadeIn overflow-hidden"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="h-40 w-full relative">
+                  <Image src={feature.image || "/placeholder.svg"} alt={feature.title} fill className="object-cover" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Real-time Analytics</h3>
-                <p className="text-gray-600">
-                  Track your spending patterns and financial health with intuitive visualizations and insights.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="rounded-full bg-emerald-100 w-12 h-12 flex items-center justify-center mb-4">
-                  <CreditCard className="h-6 w-6 text-emerald-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Smart Cards</h3>
-                <p className="text-gray-600">
-                  Control your cards directly from the app with instant freezing, spending limits, and notifications.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="rounded-full bg-emerald-100 w-12 h-12 flex items-center justify-center mb-4">
-                  <Lock className="h-6 w-6 text-emerald-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Enhanced Security</h3>
-                <p className="text-gray-600">
-                  Rest easy with biometric authentication, encryption, and real-time fraud detection.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="rounded-full bg-emerald-100 w-12 h-12 flex items-center justify-center mb-4">
-                  <DollarSign className="h-6 w-6 text-emerald-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Instant Transfers</h3>
-                <p className="text-gray-600">
-                  Send and receive money instantly, with no hidden fees or waiting periods.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="rounded-full bg-emerald-100 w-12 h-12 flex items-center justify-center mb-4">
-                  <svg className="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Smart Budgeting</h3>
-                <p className="text-gray-600">
-                  Create custom budgets, set savings goals, and receive personalized financial advice.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="rounded-full bg-emerald-100 w-12 h-12 flex items-center justify-center mb-4">
-                  <svg className="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Automated Savings</h3>
-                <p className="text-gray-600">
-                  Set up automatic transfers to your savings account based on your spending habits.
-                </p>
-              </CardContent>
-            </Card>
+                <CardContent className="pt-6 p-6">
+                  <div className="rounded-full bg-emerald-100 w-12 h-12 flex items-center justify-center mb-4">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Security Section */}
-      <section id="security" className="py-20 bg-gray-50">
-        <div className="container">
+      <section id="security" className="py-24 bg-gradient-to-b from-background to-emerald-50 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,#f0fdf4,transparent)]"></div>
+        <div className="container relative">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Bank-Grade Security</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium mb-4">
+              <Lock className="mr-1 h-3.5 w-3.5" />
+              Uncompromising Security
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Bank-Grade Security</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Your financial security is our top priority. We implement the latest security measures to protect your
               data and money.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <img
-                src="/placeholder.svg?height=400&width=500"
-                alt="Security Illustration"
-                className="rounded-lg shadow-lg"
-              />
+            <div className="relative">
+              <div className="absolute -z-10 rounded-full bg-emerald-100 w-64 h-64 -bottom-10 -left-10 blur-3xl opacity-70"></div>
+              <div className="bg-card p-3 rounded-2xl shadow-2xl border border-border rotate-[-1deg] transition-transform hover:rotate-0 duration-500">
+                <Image
+                  src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                  alt="Security Illustration"
+                  width={500}
+                  height={400}
+                  className="rounded-xl"
+                />
+                <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-3 rounded-2xl shadow-lg">
+                  <Lock className="h-6 w-6" />
+                </div>
+              </div>
             </div>
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="rounded-full bg-emerald-100 w-10 h-10 flex items-center justify-center shrink-0 mt-1">
-                  <Lock className="h-5 w-5 text-emerald-600" />
+            <div className="space-y-8">
+              {[
+                {
+                  icon: <Lock className="h-5 w-5 text-primary" />,
+                  title: "End-to-End Encryption",
+                  description:
+                    "All your data is encrypted using industry-standard protocols, ensuring your information remains private and secure.",
+                },
+                {
+                  icon: <Shield className="h-5 w-5 text-primary" />,
+                  title: "Fraud Detection",
+                  description:
+                    "Our advanced AI systems monitor your accounts 24/7 to detect and prevent unauthorized transactions.",
+                },
+                {
+                  icon: <CreditCard className="h-5 w-5 text-primary" />,
+                  title: "Multi-Factor Authentication",
+                  description:
+                    "Add an extra layer of security to your account with biometric verification and one-time passwords.",
+                },
+              ].map((feature, index) => (
+                <div key={index} className="flex gap-4 group hover:bg-card/80 p-4 rounded-xl transition-all">
+                  <div className="rounded-full bg-emerald-100 w-12 h-12 flex items-center justify-center shrink-0 mt-1 group-hover:bg-emerald-200 transition-colors">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground">{feature.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">End-to-End Encryption</h3>
-                  <p className="text-gray-600">
-                    All your data is encrypted using industry-standard protocols, ensuring your information remains
-                    private and secure.
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="rounded-full bg-emerald-100 w-10 h-10 flex items-center justify-center shrink-0 mt-1">
-                  <svg className="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Fraud Detection</h3>
-                  <p className="text-gray-600">
-                    Our advanced AI systems monitor your accounts 24/7 to detect and prevent unauthorized transactions.
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="rounded-full bg-emerald-100 w-10 h-10 flex items-center justify-center shrink-0 mt-1">
-                  <svg className="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Multi-Factor Authentication</h3>
-                  <p className="text-gray-600">
-                    Add an extra layer of security to your account with biometric verification and one-time passwords.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20">
-        <div className="container">
+      <section id="testimonials" className="py-24 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#f0fdf4,transparent)]"></div>
+        <div className="container relative">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">What Our Customers Say</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium mb-4">
+              <Star className="mr-1 h-3.5 w-3.5" />
+              Customer Stories
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Customers Say</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Don't just take our word for it. Here's what our customers have to say about their experience with
               SecureBank.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 font-bold">
-                    JD
+            {[
+              {
+                initials: "JD",
+                name: "John Doe",
+                role: "Small Business Owner",
+                testimonial:
+                  "SecureBank has transformed how I manage my business finances. The real-time analytics and easy transfer system save me hours every week.",
+                image:
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+              },
+              {
+                initials: "JS",
+                name: "Jane Smith",
+                role: "Freelance Designer",
+                testimonial:
+                  "As someone who manages irregular income, the budgeting tools have been a game-changer. I can finally plan ahead and save consistently.",
+                image:
+                  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+              },
+              {
+                initials: "RJ",
+                name: "Robert Johnson",
+                role: "Retired Teacher",
+                testimonial:
+                  "The security features give me peace of mind, and the interface is so intuitive that even I can navigate it easily. Customer service is exceptional too.",
+                image:
+                  "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80",
+              },
+            ].map((testimonial, index) => (
+              <Card
+                key={index}
+                className="border-none shadow-lg hover:shadow-xl transition-all duration-300 hover-lift bg-card/80 backdrop-blur-sm animate-fadeIn"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-full overflow-hidden relative">
+                      <Image
+                        src={testimonial.image || "/placeholder.svg"}
+                        alt={testimonial.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <div className="font-bold text-lg">{testimonial.name}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-bold">John Doe</div>
-                    <div className="text-sm text-gray-500">Small Business Owner</div>
+                  <p className="text-muted-foreground mb-6 italic">"{testimonial.testimonial}"</p>
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                    ))}
                   </div>
-                </div>
-                <p className="text-gray-600">
-                  "SecureBank has transformed how I manage my business finances. The real-time analytics and easy
-                  transfer system save me hours every week."
-                </p>
-                <div className="flex mt-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 font-bold">
-                    JS
-                  </div>
-                  <div>
-                    <div className="font-bold">Jane Smith</div>
-                    <div className="text-sm text-gray-500">Freelance Designer</div>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  "As someone who manages irregular income, the budgeting tools have been a game-changer. I can finally
-                  plan ahead and save consistently."
-                </p>
-                <div className="flex mt-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 font-bold">
-                    RJ
-                  </div>
-                  <div>
-                    <div className="font-bold">Robert Johnson</div>
-                    <div className="text-sm text-gray-500">Retired Teacher</div>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  "The security features give me peace of mind, and the interface is so intuitive that even I can
-                  navigate it easily. Customer service is exceptional too."
-                </p>
-                <div className="flex mt-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-emerald-50">
-        <div className="container">
+      <section id="contact" className="py-24 bg-gradient-to-b from-background to-emerald-50 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#f0fdf4,transparent)]"></div>
+        <div className="container relative">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium mb-4">
+              <Mail className="mr-1 h-3.5 w-3.5" />
+              Get in Touch
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">We're Here to Help</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Have questions or need assistance? Our team is here to help you with any inquiries.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="rounded-full bg-emerald-100 w-10 h-10 flex items-center justify-center shrink-0 mt-1">
-                  <svg className="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
+            <div className="space-y-8">
+              {[
+                {
+                  icon: <Phone className="h-5 w-5 text-primary" />,
+                  title: "Phone Support",
+                  description: "Our customer service team is available 24/7 at",
+                  highlight: "1-800-SECURE-BANK",
+                },
+                {
+                  icon: <Mail className="h-5 w-5 text-primary" />,
+                  title: "Email",
+                  description: "Send us an email at",
+                  highlight: "support@securebank.com",
+                },
+                {
+                  icon: <MapPin className="h-5 w-5 text-primary" />,
+                  title: "Visit Us",
+                  description: "123 Financial District, Suite 100",
+                  highlight: "New York, NY 10004",
+                },
+              ].map((contact, index) => (
+                <div key={index} className="flex gap-4 group hover:bg-card/80 p-4 rounded-xl transition-all">
+                  <div className="rounded-full bg-emerald-100 w-12 h-12 flex items-center justify-center shrink-0 mt-1 group-hover:bg-emerald-200 transition-colors">
+                    {contact.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">{contact.title}</h3>
+                    <p className="text-muted-foreground">
+                      {contact.description} <span className="text-primary font-medium">{contact.highlight}</span>
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Phone Support</h3>
-                  <p className="text-gray-600">
-                    Our customer service team is available 24/7 at{" "}
-                    <span className="text-emerald-600 font-medium">1-800-SECURE-BANK</span>
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="rounded-full bg-emerald-100 w-10 h-10 flex items-center justify-center shrink-0 mt-1">
-                  <svg className="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Email</h3>
-                  <p className="text-gray-600">
-                    Send us an email at <span className="text-emerald-600 font-medium">support@securebank.com</span>
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="rounded-full bg-emerald-100 w-10 h-10 flex items-center justify-center shrink-0 mt-1">
-                  <svg className="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Visit Us</h3>
-                  <p className="text-gray-600">
-                    123 Financial District, Suite 100
-                    <br />
-                    New York, NY 10004
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
-            <Card>
-              <CardContent className="p-6">
-                <form className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+            <Card className="border-none shadow-xl bg-card/90 backdrop-blur-sm">
+              <CardContent className="p-8">
+                <form className="space-y-5">
+                  <div className="grid grid-cols-2 gap-5">
                     <div className="space-y-2">
                       <label htmlFor="firstName" className="text-sm font-medium">
                         First Name
                       </label>
                       <input
                         id="firstName"
-                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="w-full p-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                        placeholder="John"
                       />
                     </div>
                     <div className="space-y-2">
@@ -419,7 +412,8 @@ export default function Home() {
                       </label>
                       <input
                         id="lastName"
-                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="w-full p-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                        placeholder="Doe"
                       />
                     </div>
                   </div>
@@ -430,7 +424,8 @@ export default function Home() {
                     <input
                       id="email"
                       type="email"
-                      className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      className="w-full p-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                      placeholder="john@example.com"
                     />
                   </div>
                   <div className="space-y-2">
@@ -439,7 +434,8 @@ export default function Home() {
                     </label>
                     <input
                       id="subject"
-                      className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      className="w-full p-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                      placeholder="How can we help?"
                     />
                   </div>
                   <div className="space-y-2">
@@ -449,10 +445,13 @@ export default function Home() {
                     <textarea
                       id="message"
                       rows={4}
-                      className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      className="w-full p-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                      placeholder="Tell us more about your inquiry..."
                     ></textarea>
                   </div>
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700">Send Message</Button>
+                  <Button className="w-full bg-primary hover:bg-primary/90 transition-all hover:shadow-lg py-6 text-base">
+                    Send Message
+                  </Button>
                 </form>
               </CardContent>
             </Card>
@@ -461,94 +460,97 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-auto">
+      <footer className="bg-gray-900 text-white py-16 mt-auto">
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h3 className="font-bold text-lg mb-4">SecureBank</h3>
+              <div className="flex items-center gap-2 mb-4">
+                <Shield className="h-6 w-6 text-emerald-400" />
+                <span className="text-xl font-bold">SecureBank</span>
+              </div>
               <p className="text-gray-400 text-sm">Next-generation banking for the digital age.</p>
             </div>
             <div>
-              <h4 className="font-medium mb-4">Products</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="font-medium mb-4 text-lg">Products</h4>
+              <ul className="space-y-3 text-sm text-gray-400">
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Checking
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Savings
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Credit Cards
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Loans
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-medium mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="font-medium mb-4 text-lg">Company</h4>
+              <ul className="space-y-3 text-sm text-gray-400">
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Careers
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Press
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Contact
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-medium mb-4">Legal</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="font-medium mb-4 text-lg">Legal</h4>
+              <ul className="space-y-3 text-sm text-gray-400">
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Privacy
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Terms
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-emerald-400 transition-colors">
                     Security
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">© 2025 SecureBank. All rights reserved.</p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <Link href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                 <span className="sr-only">Twitter</span>
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                 <span className="sr-only">GitHub</span>
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -556,6 +558,12 @@ export default function Home() {
                     d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
                     clipRule="evenodd"
                   />
+                </svg>
+              </Link>
+              <Link href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <span className="sr-only">LinkedIn</span>
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </Link>
             </div>
